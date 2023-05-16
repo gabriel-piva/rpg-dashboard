@@ -14,6 +14,14 @@ class Attribute {
         this.name = name;
         this.value = value;
     }
+
+    // Methods
+    static fromLiteral(attribute) {
+        return new Attribute(attribute.name, attribute.value);
+    }
+    static convertAttributes(attributesList) {
+        return attributesList.map(attributeLiteral => Attribute.fromLiteral(attributeLiteral));
+    }
 }
 class Skill {
     name;
@@ -21,6 +29,14 @@ class Skill {
     constructor(name, value) {
         this.name = name;
         this.value = value;
+    }
+
+    // Methods
+    static fromLiteral(skill) {
+        return new Skill(skill.name, skill.value);
+    }
+    static convertSkills(skillsList) {
+        return skillsList.map(skillLiteral => Skill.fromLiteral(skillLiteral));
     }
 }
 
@@ -41,6 +57,14 @@ class Attack {
         this.damage = damage;
         this.description = description;
     }
+
+    // Methods
+    static fromLiteral(attack) {
+        return new Attack(attack.name, attack.cost, attack.damage, attack.description)
+    }
+    static convertAttacks(attacksList) {
+        return attacksList.map(attackLiteral => Attack.fromLiteral(attackLiteral));
+    }
 }
 class Ability {
     name;
@@ -50,6 +74,14 @@ class Ability {
         this.name = name;
         this.cost = cost;
         this.description = description;
+    }
+
+    // Methods
+    static fromLiteral(ability) {
+        return new Ability(ability.name, ability.cost, ability.description)
+    }
+    static convertAbilities(abilitiesList) {
+        return abilitiesList.map(abilityLiteral => Ability.fromLiteral(abilityLiteral));
     }
 }
 
@@ -66,6 +98,14 @@ class Stat {
         this.current = current;
         this.max = max;
     }
+
+    // Methods
+    static fromLiteral(stat) {
+        return new Stat(stat.current, stat.max);
+    }
+    static convertStats(statsList) {
+        return statsList.map(statLiteral => Stat.fromLiteral(statLiteral));
+    }
 }
 
 // --------------------------------------------------------------------------
@@ -73,12 +113,26 @@ class Stat {
 // Character
 
 class Character {
-    name; attributes; skills;
-    image; life; sanity; power; 
-    class; race; description; level;
-    defense; armor; condition; movement; 
-    initiative; attacks; abilities;
-    inventory; notes;
+    name; 
+    attributes;
+    skills;
+    image;
+    life;
+    sanity;
+    power; 
+    class;
+    race;
+    description;
+    level;
+    defense;
+    armor;
+    condition;
+    movement; 
+    initiative;
+    attacks;
+    abilities;
+    inventory;
+    notes;
     constructor(name, attributes, skills) {
         this.name = name;
         this.attributes = attributes;
@@ -100,6 +154,36 @@ class Character {
         this.abilities = new Array();
         this.inventory = new Array();
         this.notes = "";
+    }
+
+    // Methods
+    static fromLiteral(character) {
+        const cvCharacter = new Character(
+            character.name, 
+            Attribute.convertAttributes(character.attributes), 
+            Skill.convertSkills(character.skills)
+        );
+        cvCharacter.image = character.image;
+        cvCharacter.life = Stat.fromLiteral(character.life);
+        cvCharacter.sanity = Stat.fromLiteral(character.sanity);
+        cvCharacter.power = Stat.fromLiteral(character.power);
+        cvCharacter.class = character.class;
+        cvCharacter.race = character.race;
+        cvCharacter.description = character.description;
+        cvCharacter.level = character.level;
+        cvCharacter.defense = character.defense;
+        cvCharacter.armor = character.armor;
+        cvCharacter.condition = character.condition;
+        cvCharacter.movement = character.movement;
+        cvCharacter.initiative = character.initiative;
+        cvCharacter.attacks = Attack.convertAttacks(character.attacks);
+        cvCharacter.abilities = Ability.convertAbilities(character.abilities);
+        cvCharacter.inventory = character.inventory;
+        cvCharacter.notes = character.notes;
+        return cvCharacter;
+    }
+    static convertCharacters(characterList) {
+        return characterList.map(characterLiteral => Character.fromLiteral(characterLiteral));
     }
 }
 
