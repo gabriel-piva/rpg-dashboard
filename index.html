@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="./assets/styles/style.css">
+        <link rel="stylesheet" href="./assets/styles/dashboard.css">
+        <script type="module" src="./js/dashboard.js" defer></script>
+        <title>RPG Dashboard</title>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                RPG Dashboard<i class='bx bxs-dashboard'></i>
+            </div>
+        </header>
+        <main>
+            <div class="container">
+                <!-- Characters Box -->
+                <section class="box characters">
+                    <div class="title button">
+                        Personagens
+                        <button type="button" class="openButton" id="btnCreateCharacter"><i class='bx bx-plus'></i></button>
+                    </div>
+                    <div class="content" id="charactersList"></div>
+                </section>
+                <!-- Attributes Box -->
+                <section class="box attributes">
+                    <div class="title button">
+                        Atributos
+                        <button type="button" class="openButton" id="btnCreateAttribute"><i class='bx bx-plus' ></i></button>
+                    </div>
+                    <div class="content" id="attributesList"></div>
+                </section>
+                <!-- Skills Box -->
+                <section class="box skills">
+                    <div class="title button">
+                        Perícias
+                        <button type="button" class="openButton" id="btnCreateSkill"><i class='bx bx-plus' ></i></button>
+                    </div>
+                    <div class="content" id="skillsList"></div>
+                </section>
+                <!-- Roll Dice Box -->
+                <section class="box dice">
+                    <div class="title button">
+                        Jogar Dados
+                        <button type="button" class="openButton" id="btnRollDice"><i class='bx bx-cube-alt'></i></button>
+                    </div>
+                    <div class="content">
+                        <div class="inputField">
+                            <input type="number" max="1000" id="inputDices" placeholder="Quantidade" autocomplete="off">
+                            <label for="inputDices">Quantidade</label>
+                        </div>
+                        <div class="inputField">
+                            <select id="diceType">
+                                <option value="4">D4</option>
+                                <option value="6">D6</option>
+                                <option value="8">D8</option>
+                                <option value="12">D12</option>
+                                <option value="20" selected>D20</option>
+                                <option value="100">D100</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+                <!-- Notes -->
+                <section class="box notes">
+                    <div class="inputField">
+                        <textarea spellcheck="false" id="mainNotes" placeholder="Anotações"></textarea>
+                        <label for="mainNotes">Anotações</label>
+                    </div>
+                </section>
+            </div>
+        </main>
+        <footer>
+            <div class="container">
+                &#169 Gabriel Piva Pereira
+                <div class="links">
+                    <a target="_blank" href="https://github.com/gabriel-piva"><i class='bx bxl-github'></i></a>
+                    <a target="_blank" href="https://www.linkedin.com/in/gabriel-piva/"><i class='bx bxl-linkedin-square'></i></a>
+                </div>
+            </div>
+        </footer>
+        <div class="modal">
+            <div class="modalContainer">
+                <div class="modalContent"></div>
+                <div class="options">
+                    <button type="button" class="fillButton" id="btnCloseModal"><i class='bx bx-x'></i></button>
+                    <button type="button" class="fillButton" id="btnConfirmModal"><i class='bx bx-check' ></i></button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

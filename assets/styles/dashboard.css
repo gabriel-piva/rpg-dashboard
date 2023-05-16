@@ -1,0 +1,119 @@
+/*--------------------------------------------------------------------------*/
+
+/* Dashboard Page Style */
+
+/*--------------------------------------------------------------------------*/
+
+/* Characters Box */
+
+main .container .box.characters {
+    width: 100%;
+}
+main .container .box.characters .content {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+/*-------------------------------------------------*/
+
+/* Character */
+
+main .container .box.characters .content .character {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    padding: 1.5rem;
+    min-width: 250px;
+    width: 30%;
+    margin: 10px;
+    background-color: var(--gray3);
+}
+main .container .box.characters .content .character .image {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    background-position: center;
+    background-size: cover;
+    border: 2px solid var(--main);
+}
+main .container .box.characters .content .character .name {
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 10px 0;
+    color: var(--main);
+}
+main .container .box.characters .content .character .life {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 2rem;
+    font-weight: bolder;
+    color: var(--life);
+}
+main .container .box.characters .content .character .options {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+main .container .box.characters .content .character .options button {
+    width: 62px;
+    height: 30px;
+}
+main .container .box.characters .content .character .options button i {
+    font-size: 1.8rem;
+}
+
+/*--------------------------------------------------------------------------*/
+
+/* Attributes & Skills Boxes */
+
+main .container .box.attributes,
+main .container .box.skills {
+    max-height: 410px;
+    overflow-y: auto;
+}
+main .container .box.attributes .content,
+main .container .box.skills .content  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+main .container .box.attributes .content .item,
+main .container .box.skills .content .item {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    width: 100%;
+    border-radius: 5px;
+    border-bottom: 1px solid var(--grayTransl);
+}
+main .container .box.attributes .content .item button,
+main .container .box.skills .content .item button {
+    font-size: 1.6rem;
+    padding: .4rem;
+    min-width: 40px;
+}
+
+/*--------------------------------------------------------------------------*/
+
+/* Modal Create Character, Attribute & Skill*/
+
+.modal .modalContainer.modalCreateCharacter .inputField,
+.modal .modalContainer.modalCreateAttribute .inputField,
+.modal .modalContainer.modalCreateSkill .inputField {
+    width: 100%;
+}
+.modal .modalContainer.modalCreateCharacter .inputField input,
+.modal .modalContainer.modalCreateAttribute .inputField input,
+.modal .modalContainer.modalCreateSkill .inputField input {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/*--------------------------------------------------------------------------*/

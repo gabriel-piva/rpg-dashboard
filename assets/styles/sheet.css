@@ -1,0 +1,398 @@
+/*--------------------------------------------------------------------------*/
+
+/* Sheet Page Style */
+
+/*--------------------------------------------------------------------------*/
+
+/* Display Box */
+
+main .container .box.display {
+    align-items: center;
+    justify-content: center;
+}
+main .container .display button {
+    font-size: 1.6rem;
+    padding: .5rem;
+    width: 45px;
+}
+/* Display Image */
+main .container .display .image {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    border: 3px solid var(--main);
+    background-position: center;
+    background-size: cover;
+}
+main .container .display .image .editImage {
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    background-color: rgb(117, 117, 107, 0.2);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+main .container .display .image .editImage:hover {
+    opacity: 1;
+    cursor: pointer;
+    transition: all .2s;
+}
+/* Display Name */
+main .container .display .name {
+    color: var(--main);
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 2.6rem;
+    margin-top: 10px;
+}
+/* Display Values */
+main .container .display .life,
+main .container .display .power,
+main .container .display .sanity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 2.4rem;
+    font-weight: 900;
+    margin-top: 15px;
+}
+main .container .display .life {
+    color: var(--life);
+}
+main .container .display .life button {
+    color: var(--life);
+    border: 2px solid var(--life);
+}
+main .container .display .life button:hover{
+    background-color: rgb(151, 32, 32, 0.3);
+}
+main .container .display .power {
+    color: var(--power);
+}
+main .container .display .power button {
+    color: var(--power);
+    border: 2px solid var(--power);
+}
+main .container .display .power button:hover{
+    background-color: rgb(32, 80, 151, 0.3);
+}
+main .container .display .sanity {
+    color: var(--sanity);
+}
+main .container .display .sanity button {
+    color: var(--sanity);
+    border: 2px solid var(--sanity);
+}
+main .container .display .sanity button:hover{
+    background-color: rgb(32, 151, 58, 0.3);
+}
+
+/*--------------------------------------------------------------------------*/
+
+/* Details Box */
+
+main .container .details .content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+main .container .details .content .inputField {
+    width: 48%;
+}
+main .container .details .content .inputField input {
+    width: 100%;
+    margin-bottom: 25px;
+}
+main .container .details .content .inputField.name {
+    width: 100%;
+}
+main .container .details .content .inputField.area {
+    width: 100%;
+    height: 180px;
+}
+main .container .details .content .inputField.area textarea {
+    width: 100%;
+}
+
+/*--------------------------------------------------------------------------*/
+
+/* Status Box */
+
+main .container .status .content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+main .container .status .content .inputField {
+    width: 32%;
+    margin-bottom: 20px;
+}
+main .container .status .content .inputField input {
+    width: 100%;
+}
+
+/*--------------------------------------------------------------------------*/
+
+/* Attributes & Skills Boxes */
+
+main .container .box.attributes,
+main .container .box.skills {
+    max-height: 410px;
+    overflow-y: auto;
+}
+main .container .box.attributes .content,
+main .container .box.skills .content  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+main .container .box.attributes .content .item,
+main .container .box.skills .content .item {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    width: 100%;
+    border-radius: 5px;
+    border-bottom: 1px solid var(--grayTransl);
+}
+main .container .box.attributes .content .item input,
+main .container .box.skills .content .item input {
+    outline: none;
+    text-align: center;
+    background: none;
+    border: 1px solid var(--grayTransl);
+    color: var(--white);
+    font-size: 2rem;
+    border-radius: 5px;
+    width: 60px;
+    height: 33px;
+}
+main .container .box.attributes .content .item input:focus,
+main .container .box.skills .content .item input:focus {
+    border: 2px solid var(--main);
+}
+
+/*--------------------------------------------------------------------------*/
+
+/* Abilities & Attacks Boxes */
+
+main .container .abilities,
+main .container .attacks {
+    max-height: 420px;
+    overflow-y: auto;
+}
+main .container .abilities .list .ability,
+main .container .attacks .list .attack {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    width: 100%;
+    border-radius: 5px;
+    border-bottom: 1px solid var(--grayTransl);
+}
+main .container .abilities .list .ability:hover,
+main .container .attacks .list .attack:hover {
+    cursor: pointer;
+    text-shadow: 2px 2px var(--main);
+    border-bottom: 1px solid var(--main);
+}
+main .container .abilities .list .ability .cost,
+main .container .attacks .list .attack .cost {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    font-weight: 700;
+    height: 35px;
+}
+main .container .abilities .list .ability .cost i,
+main .container .attacks .list .attack .cost i {
+    font-size: 2rem;
+}
+
+/*--------------------------------------------------------------------------*/
+
+/* Character Inventory Box */
+
+main .container .inventory {
+    max-height: 215px;
+    overflow-y: auto;
+}
+main .container .inventory .list .item {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    width: 100%;
+    border-radius: 5px;
+    border-bottom: 1px solid var(--grayTransl);
+}
+main .container .inventory .list .item button {
+    font-size: 1.6rem;
+    padding: .4rem;
+    min-width: 40px;
+}
+
+/*--------------------------------------------------------------------------*/
+
+/* Modal Create Attack, Ablity & Inventory Item */
+
+.modal .modalContainer.modalCreateAttack .modalContent .inputField,
+.modal .modalContainer.modalCreateAbility .modalContent .inputField,
+.modal .modalContainer.modalCreateInventoryItem .modalContent .inputField {
+    width: 100%;
+}
+.modal .modalContainer.modalCreateAttack .modalContent .inputField input,
+.modal .modalContainer.modalCreateAttack .modalContent .inputField textarea,
+.modal .modalContainer.modalCreateAbility .modalContent .inputField input,
+.modal .modalContainer.modalCreateAbility .modalContent .inputField textarea,
+.modal .modalContainer.modalCreateInventoryItem .modalContent .inputField input {
+    width: 100%;
+    margin-bottom: 25px;
+}
+.modal .modalContainer.modalCreateAttack .modalContent .inputField textarea,
+.modal .modalContainer.modalCreateAbility .modalContent .inputField textarea {
+    height: 100px;
+}
+
+/*--------------------------------------------------------------------------*/
+
+/* Modal Show Attack & Ability */
+
+.modal .modalContainer.modalOpenAttack .modalContent .header,
+.modal .modalContainer.modalOpenAbility .modalContent .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    padding-bottom: 1rem;
+    border-radius: 5px;
+    border-bottom: 1px solid var(--main);
+    text-shadow: 2px 2px var(--main);
+    width: 100%;
+}
+.modal .modalContainer.modalOpenAttack .modalContent .cost,
+.modal .modalContainer.modalOpenAbility .modalContent .cost {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+}
+.modal .modalContainer.modalOpenAttack .modalContent .description,
+.modal .modalContainer.modalOpenAbility .modalContent .description {
+    font-size: 1.5rem;
+    border-radius: 5px;
+    padding: 1.2rem;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+.modal .modalContainer.modalOpenAttack .modalContent .damage {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+/*--------------------------------------------------------------------------*/
+
+/* Display Modals */
+
+.modal .modalContainer.modalImage .modalContent .inputField,
+.modal .modalContainer.modalLife .modalContent .inputField,
+.modal .modalContainer.modalSanity .modalContent .inputField,
+.modal .modalContainer.modalPower .modalContent .inputField {
+    width: 100%;
+}
+.modal .modalContainer.modalImage .modalContent .inputField input,
+.modal .modalContainer.modalLife .modalContent .inputField input,
+.modal .modalContainer.modalSanity .modalContent .inputField input,
+.modal .modalContainer.modalPower .modalContent .inputField input {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* Modal Image */
+.modal .modalContainer.modalImage {
+    border-top: 7px solid var(--image);
+}
+.modal .modalContainer.modalImage .modalContent .inputField input {
+    border: 2px solid var(--image);
+}
+.modal .modalContainer.modalImage .modalContent .inputField input:focus + label, 
+.modal .modalContainer.modalImage .modalContent .inputField input:not(:placeholder-shown) + label  {
+    color: var(--image);
+}
+.modal .modalContainer.modalImage .options button {
+    background-color: var(--image);
+}
+
+/* Modal Life */
+.modal .modalContainer.modalLife {
+    border-top: 7px solid var(--life);
+}
+.modal .modalContainer.modalLife .modalContent .inputField input {
+    border: 2px solid var(--life);
+}
+.modal .modalContainer.modalLife .modalContent .inputField input:focus + label, 
+.modal .modalContainer.modalLife .modalContent .inputField input:not(:placeholder-shown) + label  {
+    color: var(--life);
+}
+.modal .modalContainer.modalLife .options button {
+    background-color: var(--life);
+}
+
+/* Modal Sanity */
+.modal .modalContainer.modalSanity {
+    border-top: 7px solid var(--sanity);
+}
+.modal .modalContainer.modalSanity .modalContent .inputField input {
+    border: 2px solid var(--sanity);
+}
+.modal .modalContainer.modalSanity .modalContent .inputField input:focus + label, 
+.modal .modalContainer.modalSanity .modalContent .inputField input:not(:placeholder-shown) + label  {
+    color: var(--sanity);
+}
+.modal .modalContainer.modalSanity .options button {
+    background-color: var(--sanity);
+}
+
+/* Modal Power */
+.modal .modalContainer.modalPower {
+    border-top: 7px solid var(--power);
+}
+.modal .modalContainer.modalPower .modalContent .inputField input {
+    border: 2px solid var(--power);
+}
+.modal .modalContainer.modalPower .modalContent .inputField input:focus + label, 
+.modal .modalContainer.modalPower .modalContent .inputField input:not(:placeholder-shown) + label  {
+    color: var(--power);
+}
+.modal .modalContainer.modalPower .options button {
+    background-color: var(--power);
+}
+
+/*--------------------------------------------------------------------------*/
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    main .container .status .content .inputField {
+        width: 48%;
+    }
+    main .container .notes textarea {
+        height: 180px;
+    }
+}
+
+/*--------------------------------------------------------------------------*/
