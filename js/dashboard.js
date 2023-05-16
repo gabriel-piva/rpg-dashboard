@@ -4,8 +4,11 @@
 
 // --------------------------------------------------------------------------
 
-import { Character, Attribute, Skill, Attack, Ability } from "./character.js";
-import { getCharactersData, setCharactersData, getAttributesData, setAttributesData, getSkillsData, setSkillsData, getMainNotes, setMainNotes } from "./storage.js";
+import { Character } from "./model/character.js";
+import { 
+    getCharactersData, setCharactersData, getAttributesData, setAttributesData, 
+    getSkillsData, setSkillsData, getMainNotes, setMainNotes 
+} from "./storage.js";
 
 // --------------------------------------------------------------------------
 
