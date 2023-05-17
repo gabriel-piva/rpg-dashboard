@@ -11,7 +11,7 @@ import { Stat } from "./stat.js";
 // Character
 
 class Character {
-    name; 
+    name;
     attributes;
     skills;
     image;
@@ -82,6 +82,20 @@ class Character {
     }
     static convertCharacters(charactersList) {
         return charactersList.map(characterLiteral => Character.fromLiteral(characterLiteral));
+    }
+    getCharacterCard() {
+        const card = document.createElement('div');
+        card.classList.add('character');
+        card.innerHTML = `
+            <div class="image" style="background-image: url(${this.image})"></div>
+            <span class="name">${this.name}</span>
+            <div class="life"><i class='bx bxs-heart'></i>${this.life.current}/${this.life.max}</div>
+            <div class="options">
+                <button type="button" class="openButton open"><i class='bx bx-link-alt'></i></button>
+                <button type="button" class="openButton delete"><i class='bx bxs-trash'></i></button>
+            </div>
+        `;
+        return card;
     }
 }
 

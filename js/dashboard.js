@@ -16,12 +16,21 @@ import {
 
 // Characters Box
 
-const charactersBox = document.querySelector('#charactersList');
-
-const loadCharacters = () => {}
+const loadCharacters = () => {
+    const charactersBox = document.querySelector('#charactersList');
+    charactersBox.innerHTML = "";
+    const characterList = getCharactersData();
+    const characterCards = characterList.map((character, index) => {
+        const card = character.getCharacterCard();
+        card.querySelector('.open').addEventListener('click', () => openCharacter(index));
+        card.querySelector('.delete').addEventListener('click', () => modalDelete(index, 'character'));
+        return card;
+    });
+    charactersBox.append(...characterCards);
+}
 const addCharacter = () => {}
 const removeCharacter = (index) => {}
-const openCharacterSheet = (index) => window.location.assign(`../sheet.html?index=${index}`);
+const openCharacter = (index) => window.location.assign(`../sheet.html?index=${index}`);
 
 // --------------------------------------------------------------------------
 
@@ -45,13 +54,13 @@ const removeSkill = (index) => {}
 
 // --------------------------------------------------------------------------
 
-// Dashboard Data
+// Load Dashboard Data
 
 const loadDashboardData = () => {
     loadCharacters();
     loadAttributes();
     loadSkills();
-    document.querySelector('#mainNotes').value = getMasterNotes();
+    document.querySelector('#masterNotes').value = getMasterNotes();
 }
 
 // --------------------------------------------------------------------------
