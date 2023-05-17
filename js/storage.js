@@ -49,7 +49,7 @@ export { getSkillsData, setSkillsData };
 
 // --------------------------------------------------------------------------
 
-// Main Notes
+// Master Notes
 
 const notesKey = "notes_rpg"
 const getMasterNotes = () => localStorage.getItem(notesKey) || "";
