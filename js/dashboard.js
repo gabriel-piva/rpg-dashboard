@@ -205,6 +205,7 @@ window.onload = loadDashboardData;
 document.querySelector("#btnCreateCharacter").addEventListener("click", modalCreateCharacter);
 document.querySelector("#btnCreateAttribute").addEventListener("click", modalCreateAttribute);
 document.querySelector("#btnCreateSkill").addEventListener("click", modalCreateSkill);
+document.querySelector("#masterNotes").addEventListener("input", () => setMasterNotes(document.querySelector("#masterNotes").value));
 document.querySelector("#btnCloseModal").addEventListener("click", closeModal);
 modal.addEventListener('click', (e) => e.target == modal && closeModal());
 
