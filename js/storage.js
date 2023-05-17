@@ -4,10 +4,19 @@
 
 // --------------------------------------------------------------------------
 
+import { Character } from "./model/character.js";
+import { Attribute } from "./model/attribute.js";
+import { Skill } from "./model/skill.js";
+
+// --------------------------------------------------------------------------
+
 // Characters
 
 const charactersKey = "characters_rpg";
-const getCharactersData = () => JSON.parse(localStorage.getItem(charactersKey)) || [];
+const getCharactersData = () => {
+    const charactersList = JSON.parse(localStorage.getItem(charactersKey)) || [];
+    return Character.convertCharacters(charactersList);
+}
 const setCharactersData = (charactersList) => localStorage.setItem(charactersKey, JSON.stringify(charactersList));
 
 export { getCharactersData, setCharactersData };
@@ -17,7 +26,10 @@ export { getCharactersData, setCharactersData };
 // Attributes
 
 const attributesKey = "attributes_rpg";
-const getAttributesData = () => JSON.parse(localStorage.getItem(attributesKey)) || [];
+const getAttributesData = () => {
+    const attributesList = JSON.parse(localStorage.getItem(attributesKey)) || [];
+    return Attribute.convertAttributes(attributesList);
+}
 const setAttributesData = (attributesList) => localStorage.setItem(attributesKey, JSON.stringify(attributesList));
 
 export { getAttributesData, setAttributesData };
@@ -27,7 +39,10 @@ export { getAttributesData, setAttributesData };
 // Skills
 
 const skillsKey = "skills_rpg";
-const getSkillsData = () => JSON.parse(localStorage.getItem(skillsKey)) || [];
+const getSkillsData = () => {
+    const skillsList = JSON.parse(localStorage.getItem(skillsKey)) || [];
+    return Skill.convertSkills(skillsList);
+}
 const setSkillsData = (skillsList) => localStorage.setItem(skillsKey, JSON.stringify(skillsList));
 
 export { getSkillsData, setSkillsData };
@@ -37,9 +52,9 @@ export { getSkillsData, setSkillsData };
 // Main Notes
 
 const notesKey = "notes_rpg"
-const getMainNotes = () => localStorage.getItem(notesKey);
-const setMainNotes = (notes) => localStorage.setItem(notesKey, notes);
+const getMasterNotes = () => localStorage.getItem(notesKey) || "";
+const setMasterNotes = (notes) => localStorage.setItem(notesKey, notes);
 
-export { getMainNotes, setMainNotes };
+export { getMasterNotes, setMasterNotes };
 
 // --------------------------------------------------------------------------

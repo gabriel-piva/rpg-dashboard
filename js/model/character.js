@@ -80,8 +80,8 @@ class Character {
         cvCharacter.notes = character.notes;
         return cvCharacter;
     }
-    static convertCharacters(characterList) {
-        return characterList.map(characterLiteral => Character.fromLiteral(characterLiteral));
+    static convertCharacters(charactersList) {
+        return charactersList.map(characterLiteral => Character.fromLiteral(characterLiteral));
     }
 }
 
