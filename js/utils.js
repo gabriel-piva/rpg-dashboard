@@ -34,7 +34,7 @@ const rollDices = () => {
     const inputDices = document.querySelector('#inputDices');
     const diceType = parseInt(document.querySelector('#diceType').value);
     let quantity = inputDices.value;
-    if(quantity.length == 0 || quantity < 0) return; 
+    if(quantity.length == 0 || quantity <= 0) return; 
     if(quantity > 1000) {
         quantity = 1000;
         inputDices.value = quantity;
