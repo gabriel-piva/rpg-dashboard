@@ -13,6 +13,7 @@ import {
     getSkillsData, setSkillsData, 
     getMasterNotes, setMasterNotes 
 } from "./storage.js";
+import { createDiceSection } from "./utils.js";
 
 // --------------------------------------------------------------------------
 
@@ -230,6 +231,7 @@ const loadDashboardData = () => {
     loadAttributes();
     loadSkills();
     document.querySelector('#masterNotes').value = getMasterNotes();
+    createDiceSection();
 }
 
 // --------------------------------------------------------------------------
