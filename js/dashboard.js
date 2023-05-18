@@ -38,7 +38,13 @@ const addCharacter = () => {
     closeModal();
     loadCharacters();
 }
-const removeCharacter = (index) => {}
+const removeCharacter = (index) => {
+    const charactersList = getCharactersData();
+    charactersList.splice(index, 1);
+    setCharactersData(charactersList);
+    closeModal();
+    loadCharacters();
+}
 const openCharacter = (index) => window.location.assign(`../sheet.html?index=${index}`);
 
 // --------------------------------------------------------------------------
@@ -67,7 +73,16 @@ const addAttribute = () => {
     closeModal();
     loadAttributes();
 };
-const removeAttribute = (index) => {}
+const removeAttribute = (index) => {
+    const attributesList = getAttributesData();
+    attributesList.splice(index, 1);
+    setAttributesData(attributesList);
+    const charactersList = getCharactersData();
+    charactersList.forEach(character => character.attributes.splice(index, 1));
+    setCharactersData(charactersList)
+    closeModal();
+    loadAttributes();
+}
 
 // --------------------------------------------------------------------------
 
@@ -97,7 +112,16 @@ const addSkill = () => {
     closeModal();
     loadSkills();
 }
-const removeSkill = (index) => {}
+const removeSkill = (index) => {
+    const skillsList = getSkillsData();
+    skillsList.splice(index, 1);
+    setSkillsData(skillsList);
+    const charactersList = getCharactersData();
+    charactersList.forEach(character => character.skills.splice(index, 1));
+    setCharactersData(charactersList)
+    closeModal();
+    loadSkills();
+}
 
 // --------------------------------------------------------------------------
 
@@ -106,7 +130,7 @@ const removeSkill = (index) => {}
 let mainAction;
 const modal = document.querySelector('.modal');
 const modalContainer = document.querySelector('.modalContainer');
-const modalContent = document.querySelector('.modalContainer .modalContent');
+const modalContent = document.querySelector('.modalContent');
 const btnMainAction = document.querySelector("#btnMainActionModal");
 
 // Open & Close Modal
@@ -119,8 +143,23 @@ const closeModal = () => {
     modalContainer.className = modalContainer.classList[0];
     modalContent.innerHTML = "";
     btnMainAction.disabled = false;
-    btnMainAction.removeEventListener("click", mainAction);
+    removeModalMainAction();
 }
+
+// -------------------------------------------------
+
+// Modal Main Action
+
+const handleKeyPress = (event) => (event.key == "Enter") &&  mainAction();
+const setModalMainAction = (action) => {
+    mainAction = action;
+    btnMainAction.addEventListener('click', mainAction);
+    document.addEventListener('keydown', handleKeyPress);
+}
+const removeModalMainAction = () => {
+    btnMainAction.removeEventListener("click", mainAction);
+    document.removeEventListener('keydown', handleKeyPress);
+};
 
 // -------------------------------------------------
 
@@ -134,8 +173,7 @@ const modalDelete = (index, id) => {
         'attribute': () => removeAttribute(index),
         'skill': () => removeSkill(index)
     };
-    mainAction = deleteFunctions[id];
-    btnMainAction.addEventListener('click', mainAction);
+    setModalMainAction(deleteFunctions[id]);
 }
 
 // -------------------------------------------------
@@ -150,8 +188,7 @@ const modalCreateCharacter = () => {
             <label for="characterName">Nome</label>
         </div>
     `;
-    mainAction = addCharacter;
-    btnMainAction.addEventListener('click', mainAction);
+    setModalMainAction(addCharacter);
 }
 
 // -------------------------------------------------
@@ -166,8 +203,7 @@ const modalCreateAttribute = () => {
             <label for="attributeName">Atributo</label>
         </div>
     `;
-    mainAction = addAttribute;
-    btnMainAction.addEventListener('click', mainAction);
+    setModalMainAction(addAttribute);
 }
 
 // -------------------------------------------------
@@ -182,8 +218,7 @@ const modalCreateSkill = () => {
             <label for="skillName">Perícia</label>
         </div>
     `;
-    mainAction = addSkill;
-    btnMainAction.addEventListener('click', mainAction);
+    setModalMainAction(addSkill);
 }
 
 // --------------------------------------------------------------------------
