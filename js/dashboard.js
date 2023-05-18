@@ -89,8 +89,6 @@ const removeAttribute = (index) => {
 
 // Skills Box
 
-const skillsBox = document.querySelector('#skillsList');
-
 const loadSkills = () => {
     const skillsBox = document.querySelector('#skillsList');
     skillsBox.innerHTML = "";

@@ -97,6 +97,58 @@ class Character {
         `;
         return card;
     }
+    getCharacterDisplay() {
+        const section = document.createElement('section');
+        section.classList.add('box', 'display');
+        section.innerHTML = `
+            <div class="image" id="characterImage" style="background-image: url(${this.image})">
+                <div class="editImage"><i class='bx bxs-pencil'></i></div>
+            </div>
+            <span class="name">${this.name}</span>
+            <div class="life">
+                <i class='bx bxs-heart'></i>
+                <span class="value">${this.life.current}/${this.life.max}</span>
+                <button type="button" class="openButton" id="btnEditLife"><i class='bx bxs-pencil'></i></button>
+            </div>
+            <div class="sanity">
+                <i class='bx bxs-brain'></i>
+                <span class="value">${this.sanity.current}/${this.sanity.max}</span>
+                <button type="button" class="openButton" id="btnEditSanity"><i class='bx bxs-pencil'></i></button>
+            </div>
+            <div class="power">
+                <i class='bx bxs-meteor'></i>
+                <span class="value">${this.power.current}/${this.power.max}</span>
+                <button type="button" class="openButton" id="btnEditPower"><i class='bx bxs-pencil'></i></button>
+            </div>
+        `;
+        return section;
+    }
+    getCharacterDetails() {
+        const section = document.createElement('section');
+        section.classList.add('box', 'details');
+        section.innerHTML = `
+            <span class="title">Detalhes</span>
+            <div class="content">
+                <div class="inputField name">
+                    <input type="text" value="${this.name}" id="inputName" placeholder="Nome" autocomplete="off" spellcheck="false">
+                    <label for="inputName">Nome</label>
+                </div>
+                <div class="inputField">
+                    <input type="text" value="${this.race}" id="inputRace" placeholder="Raça" autocomplete="off" spellcheck="false">
+                    <label for="inputRace">Raça</label>
+                </div>
+                <div class="inputField">
+                    <input type="text" value="${this.class}" id="inputClass" placeholder="Classe" autocomplete="off" spellcheck="false">
+                    <label for="inputClass">Classe</label>
+                </div>
+                <div class="inputField area">
+                    <textarea spellcheck="false" id="characterDescription" placeholder="Descrição">${this.description}</textarea>
+                    <label for="characterDescription">Descrição</label>
+                </div>
+            </div>
+        `;
+        return section;
+    }
 }
 
 export { Character };

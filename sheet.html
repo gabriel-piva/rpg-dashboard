@@ -19,78 +19,34 @@
         </header>
         <main>
             <div class="container">
-                <!-- Character Display -->
-                <section class="box display">
-                    <div class="image" id="characterImage">
-                        <div class="editImage"><i class='bx bxs-pencil'></i></div>
-                    </div>
-                    <span class="name"></span>
-                    <div class="life">
-                        <i class='bx bxs-heart'></i>
-                        <span class="value"></span>
-                        <button type="button" class="openButton" id="btnEditLife"><i class='bx bxs-pencil'></i></button>
-                    </div>
-                    <div class="sanity">
-                        <i class='bx bxs-brain'></i>
-                        <span class="value"></span> 
-                        <button type="button" class="openButton" id="btnEditSanity"><i class='bx bxs-pencil'></i></button>
-                    </div>
-                    <div class="power">
-                        <i class='bx bxs-meteor'></i> 
-                        <span class="value"></span> 
-                        <button type="button" class="openButton" id="btnEditPower"><i class='bx bxs-pencil'></i></button>
-                    </div>
-                </section>
-                <!-- Character Details -->
-                <section class="box details">
-                    <span class="title">Detalhes</span>
-                    <div class="content">
-                        <div class="inputField name">
-                            <input type="text" id="inputName" placeholder="Nome" autocomplete="off" spellcheck="false">
-                            <label for="inputName">Nome</label>
-                        </div>
-                        <div class="inputField">
-                            <input type="text" id="inputRace" placeholder="Raça" autocomplete="off" spellcheck="false">
-                            <label for="inputRace">Raça</label>
-                        </div>
-                        <div class="inputField">
-                            <input type="text" id="inputClass" placeholder="Classe" autocomplete="off" spellcheck="false">
-                            <label for="inputClass">Classe</label>
-                        </div>
-                        <div class="inputField area">
-                            <textarea spellcheck="false" id="characterDescription" placeholder="Descrição" spellcheck="false"></textarea>
-                            <label for="characterDescription">Descrição</label>
-                        </div>
-                    </div>                    
-                </section>
                 <!-- Character Attributes -->
-                <section class="box attributes">
+                <!-- <section class="box attributes">
                     <span class="title">Atributos</span>
                     <div class="content" id="characterAttributes"></div>
-                </section>
+                </section> -->
                 <!-- Character Skills -->
-                <section class="box skills">
+                <!-- <section class="box skills">
                     <span class="title">Perícias</span>
                     <div class="content" id="characterSkills"></div>
-                </section>
+                </section> -->
                 <!-- Character Attacks -->
-                <section class="box attacks">
+                <!-- <section class="box attacks">
                     <div class="title button">
                         Ataques
                         <button type="button" class="openButton" id="btnCreateAttack"><i class='bx bx-plus'></i></button>
                     </div>
                     <div class="list" id="attacksList"></div>
-                </section>
+                </section> -->
                 <!-- Character Abilities -->
-                <section class="box abilities">
+                <!-- <section class="box abilities">
                     <div class="title button">
                         Habilidades
                         <button type="button" class="openButton" id="btnCreateAbility"><i class='bx bx-plus'></i></button>
                     </div>
                     <div class="list" id="abilitiesList"></div>
-                </section>
+                </section> -->
                 <!-- Character Status -->
-                <section class="box status">
+                <!-- <section class="box status">
                     <span class="title">Status</span>
                     <div class="content">
                         <div class="inputField">
@@ -118,45 +74,22 @@
                             <label for="inputCondition">Condição</label>
                         </div>
                     </div>
-                </section>
+                </section> -->
                 <!--Character Inventory -->
-                <section class="box inventory">
+                <!-- <section class="box inventory">
                     <div class="title button">
                         Inventário
                         <button type="button" class="openButton" id="btnCreateInventoryItem"><i class='bx bx-plus'></i></button>
                     </div>
                     <div class="list" id="inventoryList"></div>
-                </section>
-                <!-- Roll Dice Box -->
-                <section class="box dice">
-                    <div class="title button">
-                        Jogar Dados
-                        <button type="button" class="openButton" id="btnRollDice"><i class='bx bx-cube-alt'></i></button>
-                    </div>
-                    <div class="content">
-                        <div class="inputField">
-                            <input type="number" max="1000" id="inputDices" placeholder="Quantidade" autocomplete="off">
-                            <label for="inputDices">Quantidade</label>
-                        </div>
-                        <div class="inputField">
-                            <select id="diceType">
-                                <option value="4">D4</option>
-                                <option value="6">D6</option>
-                                <option value="8">D8</option>
-                                <option value="12">D12</option>
-                                <option value="20" selected>D20</option>
-                                <option value="100">D100</option>
-                            </select>
-                        </div>
-                    </div>
-                </section>
+                </section>-->
                 <!-- Character Notes -->
-                <section class="box notes">
+                <!-- <section class="box notes">
                     <div class="inputField">
                         <textarea spellcheck="false" id="sheetNotes" placeholder="Anotações"></textarea>
                         <label for="sheetNotes">Anotações</label>
                     </div>
-                </section>
+                </section> -->
             </div>
         </main>
         <footer>
@@ -174,7 +107,7 @@
                 </div>
                 <div class="options">
                     <button type="button" class="fillButton" id="btnCloseModal"><i class='bx bx-x'></i></button>
-                    <button type="button" class="fillButton" id="btnConfirmModal"><i class='bx bx-check'></i></button>
+                    <button type="button" class="fillButton" id="btnMainActionModal"><i class='bx bx-check'></i></button>
                 </div>
             </div>
         </div>
