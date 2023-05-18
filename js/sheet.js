@@ -37,6 +37,7 @@ const container = document.querySelector("main .container");
 // -------------------------------------------------
 
 // Display Box
+
 const loadCharacterDisplay = () => {
     const display = currentCharacter.getCharacterDisplay();
     display.querySelector("#characterImage").addEventListener('click', () => console.log("Editar Imagem"));
@@ -46,9 +47,12 @@ const loadCharacterDisplay = () => {
     container.appendChild(display);
 }
 
+// Update Display
+
 // -------------------------------------------------
 
 // Details Box
+
 const loadCharacterDetails = () => {
     const details = currentCharacter.getCharacterDetails();
     container.appendChild(details);
@@ -57,6 +61,8 @@ const loadCharacterDetails = () => {
     details.querySelector("#inputClass").addEventListener("input", updateClass);
     details.querySelector("#characterDescription").addEventListener("input", updateDescription);
 }
+
+// Update Details
 const updateName = () => {
     const newName = document.querySelector("#inputName").value
     if(newName.length == 0) return;
@@ -96,7 +102,7 @@ const updateDescription = () => {
 
 // --------------------------------------------------------------------------
 
-// Load Sheet Data
+// Sheet Data
 
 const loadCharacterData = () => {
     loadCharacterDisplay();
