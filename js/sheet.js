@@ -32,19 +32,13 @@ const getCurrentCharacter = () => {
 
 // Character Boxes
 
-const container = document.querySelector("main .container");
-
-// -------------------------------------------------
-
 // Display Box
-
 const loadCharacterDisplay = () => {
     const display = currentCharacter.getCharacterDisplay();
     display.querySelector("#characterImage").addEventListener('click', () => console.log("Editar Imagem"));
     display.querySelector("#btnEditLife").addEventListener('click', () => console.log("Editar Vida"));
     display.querySelector("#btnEditSanity").addEventListener('click', () => console.log("Editar Sanidade"));
     display.querySelector("#btnEditPower").addEventListener('click', () => console.log("Editar Poder"));
-    container.appendChild(display);
 }
 
 // Update Display
@@ -52,10 +46,8 @@ const loadCharacterDisplay = () => {
 // -------------------------------------------------
 
 // Details Box
-
 const loadCharacterDetails = () => {
     const details = currentCharacter.getCharacterDetails();
-    container.appendChild(details);
     details.querySelector("#inputName").addEventListener("input", updateName);
     details.querySelector("#inputRace").addEventListener("input", updateRace);
     details.querySelector("#inputClass").addEventListener("input", updateClass);
@@ -94,6 +86,56 @@ const updateDescription = () => {
     currentCharacter = charactersList[characterIndex];   
 }
 
+// -------------------------------------------------
+
+// Attributes Box
+const loadCharacterAttributes = () => {
+    const attributes = currentCharacter.getCharacterAttributes();
+    //attributes.querySelector("").addEventListener("", func);
+}
+
+// -------------------------------------------------
+
+// Skills Box
+const loadCharacterSkills = () => {
+    const skills = currentCharacter.getCharacterSkills();
+}
+
+// -------------------------------------------------
+
+// Attacks Box
+const loadCharacterAttacks = () => {
+    const attacks = currentCharacter.getCharacterAttacks();
+}
+
+// -------------------------------------------------
+
+// Abilities Box
+const loadCharacterAbilities = () => {
+    const abilities = currentCharacter.getCharacterAbilities();
+}
+
+// -------------------------------------------------
+
+// Status Box
+const loadCharacterStatus = () => {
+    const status = currentCharacter.getCharacterStatus();
+}
+
+// -------------------------------------------------
+
+// Inventory Box
+const loadCharacterInventory = () => {
+    const inventory = currentCharacter.getCharacterInventory();
+}
+
+// -------------------------------------------------
+
+// Notes Box
+const loadCharacterNotes = () => {
+    const notes = currentCharacter.getCharacterNotes();
+}
+
 // --------------------------------------------------------------------------
 
 // Modals
@@ -107,13 +149,13 @@ const updateDescription = () => {
 const loadCharacterData = () => {
     loadCharacterDisplay();
     loadCharacterDetails();
-    // loadCharacterAttributes();
-    // loadCharacterSkills();
-    // loadCharacterAttacks();
-    // loadCharacterAbilities();
-    // loadCharacterStatus();
-    // loadCharacterInventory();
-    // loadCharacterNotes();
+    loadCharacterAttributes();
+    loadCharacterSkills();
+    loadCharacterAttacks();
+    loadCharacterAbilities();
+    loadCharacterStatus();
+    loadCharacterInventory();
+    loadCharacterNotes();
 }
 const loadSheetData = () => {
     getCurrentCharacter();
