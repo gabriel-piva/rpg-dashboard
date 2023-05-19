@@ -58,11 +58,10 @@ const rollDices = () => {
     modalDiceResults(diceResults);
 }
 const modalDiceResults = (diceResults) => {
-    document.querySelector('.modal').classList.add('active');
-    document.querySelector('.modalContainer').classList.add('active');
+    openModal();
     const results = diceResults.results.join(" ");
-    document.querySelector('.modalContainer').classList.add("modalDices");
-    document.querySelector('.modalContent').innerHTML = `
+    modalContainer.classList.add("modalDices");
+    modalContent.innerHTML = `
         <div class="title">Resultado de ${diceResults.quantity} D${diceResults.type}</div>
         <div class="resultsList">${results}</div>        
         <div class="mainResults">
@@ -70,8 +69,7 @@ const modalDiceResults = (diceResults) => {
             <div class="sum">Soma<span>${diceResults.sum}</span></div>
         </div>
     `;
-    document.querySelector('.modalContainer').classList.add("modalDices");
-    document.querySelector('#btnMainActionModal').disabled = true;
+    btnMainAction.disabled = true;
 }
 
 export { createDiceSection };
@@ -108,7 +106,7 @@ const setModalMainAction = (action) => {
 const removeModalMainAction = () => {
     btnMainAction.removeEventListener("click", mainAction);
     document.removeEventListener('keydown', handleKeyPress);
-};
+}
 const handleKeyPress = (event) => (event.key == "Enter") && mainAction();
 
 export { setModalMainAction, openModal, closeModal };
