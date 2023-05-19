@@ -13,7 +13,7 @@ import {
     getSkillsData, setSkillsData, 
     getMasterNotes, setMasterNotes 
 } from "./storage.js";
-import { createDiceSection } from "./utils.js";
+import { createDiceSection, setModalMainAction, openModal, closeModal } from "./utils.js";
 
 // --------------------------------------------------------------------------
 
@@ -73,7 +73,7 @@ const addAttribute = () => {
     setCharactersData(charactersList);
     closeModal();
     loadAttributes();
-};
+}
 const removeAttribute = (index) => {
     const attributesList = getAttributesData();
     attributesList.splice(index, 1);
@@ -124,43 +124,10 @@ const removeSkill = (index) => {
 
 // --------------------------------------------------------------------------
 
-// Modals
+// Dashboard Modals
 
-let mainAction;
-const modal = document.querySelector('.modal');
 const modalContainer = document.querySelector('.modalContainer');
 const modalContent = document.querySelector('.modalContent');
-const btnMainAction = document.querySelector("#btnMainActionModal");
-
-// Open & Close Modal
-const openModal = () => {
-    modal.classList.add('active');
-    modalContainer.classList.add('active');
-}
-const closeModal = () => {
-    modal.classList.remove('active');
-    modalContainer.className = modalContainer.classList[0];
-    modalContent.innerHTML = "";
-    btnMainAction.disabled = false;
-    removeModalMainAction();
-}
-
-// -------------------------------------------------
-
-// Modal Main Action
-
-const handleKeyPress = (event) => (event.key == "Enter") &&  mainAction();
-const setModalMainAction = (action) => {
-    mainAction = action;
-    btnMainAction.addEventListener('click', mainAction);
-    document.addEventListener('keydown', handleKeyPress);
-}
-const removeModalMainAction = () => {
-    btnMainAction.removeEventListener("click", mainAction);
-    document.removeEventListener('keydown', handleKeyPress);
-};
-
-// -------------------------------------------------
 
 // Modal Delete
 const modalDelete = (index, id) => {
@@ -175,8 +142,6 @@ const modalDelete = (index, id) => {
     setModalMainAction(deleteFunctions[id]);
 }
 
-// -------------------------------------------------
-
 // Modal New Character 
 const modalCreateCharacter = () => {
     openModal();
@@ -190,8 +155,6 @@ const modalCreateCharacter = () => {
     setModalMainAction(addCharacter);
 }
 
-// -------------------------------------------------
-
 // Modal New Attribute
 const modalCreateAttribute = () => {
     openModal();
@@ -204,8 +167,6 @@ const modalCreateAttribute = () => {
     `;
     setModalMainAction(addAttribute);
 }
-
-// -------------------------------------------------
 
 // Modal New Skill
 const modalCreateSkill = () => {
@@ -242,6 +203,6 @@ document.querySelector("#btnCreateAttribute").addEventListener("click", modalCre
 document.querySelector("#btnCreateSkill").addEventListener("click", modalCreateSkill);
 document.querySelector("#masterNotes").addEventListener("input", () => setMasterNotes(document.querySelector("#masterNotes").value));
 document.querySelector("#btnCloseModal").addEventListener("click", closeModal);
-modal.addEventListener('click', (e) => e.target == modal && closeModal());
+document.querySelector('.modal').addEventListener('click', (e) => e.target == document.querySelector('.modal') && closeModal());
 
 // --------------------------------------------------------------------------

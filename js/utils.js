@@ -77,3 +77,40 @@ const modalDiceResults = (diceResults) => {
 export { createDiceSection };
 
 // --------------------------------------------------------------------------
+
+// Modals
+
+let mainAction;
+const modal = document.querySelector('.modal');
+const modalContainer = document.querySelector('.modalContainer');
+const modalContent = document.querySelector('.modalContent');
+const btnMainAction = document.querySelector("#btnMainActionModal");
+
+// Open & Close Modal
+const openModal = () => {
+    modal.classList.add('active');
+    modalContainer.classList.add('active');
+}
+const closeModal = () => {
+    modal.classList.remove('active');
+    modalContainer.className = modalContainer.classList[0];
+    modalContent.innerHTML = "";
+    btnMainAction.disabled = false;
+    removeModalMainAction();
+}
+
+// Modal Main Action
+const setModalMainAction = (action) => {
+    mainAction = action;
+    btnMainAction.addEventListener('click', mainAction);
+    document.addEventListener('keydown', handleKeyPress);
+}
+const removeModalMainAction = () => {
+    btnMainAction.removeEventListener("click", mainAction);
+    document.removeEventListener('keydown', handleKeyPress);
+};
+const handleKeyPress = (event) => (event.key == "Enter") && mainAction();
+
+export { setModalMainAction, openModal, closeModal };
+
+// --------------------------------------------------------------------------
