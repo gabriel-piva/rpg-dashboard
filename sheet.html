@@ -21,18 +21,57 @@
             <div class="container">
                 <!-- Character Display -->
                 <section class="box display">
+                    <div class="image" id="characterImage">
+                        <div class="editImage"><i class='bx bxs-pencil'></i></div>
+                    </div>
+                    <span class="name"></span>
+                    <div class="life">
+                        <i class='bx bxs-heart'></i>
+                        <span class="value"></span>
+                        <button type="button" class="openButton" id="btnEditLife"><i class='bx bxs-pencil'></i></button>
+                    </div>
+                    <div class="sanity">
+                        <i class='bx bxs-brain'></i>
+                        <span class="value"></span>
+                        <button type="button" class="openButton" id="btnEditSanity"><i class='bx bxs-pencil'></i></button>
+                    </div>
+                    <div class="power">
+                        <i class='bx bxs-meteor'></i>
+                        <span class="value"></span>
+                        <button type="button" class="openButton" id="btnEditPower"><i class='bx bxs-pencil'></i></button>
+                    </div>
                 </section>
                 <!-- Character Details -->
                 <section class="box details">
                     <span class="title">Detalhes</span>
+                    <div class="content">
+                        <div class="inputField name">
+                            <input type="text" id="inputName" placeholder="Nome" autocomplete="off" spellcheck="false">
+                            <label for="inputName">Nome</label>
+                        </div>
+                        <div class="inputField">
+                            <input type="text" id="inputRace" placeholder="Raça" autocomplete="off" spellcheck="false">
+                            <label for="inputRace">Raça</label>
+                        </div>
+                        <div class="inputField">
+                            <input type="text" id="inputClass" placeholder="Classe" autocomplete="off" spellcheck="false">
+                            <label for="inputClass">Classe</label>
+                        </div>
+                        <div class="inputField area">
+                            <textarea spellcheck="false" id="characterDescription" placeholder="Descrição"></textarea>
+                            <label for="characterDescription">Descrição</label>
+                        </div>
+                    </div>
                 </section>
                 <!-- Character Attributes -->
                 <section class="box attributes">
                     <span class="title">Atributos</span>
+                    <div class="content" id="characterAttributes"></div>
                 </section>
                 <!-- Character Skills -->
                 <section class="box skills">
                     <span class="title">Perícias</span>
+                    <div class="content" id="characterSkills"></div>
                 </section>
                 <!-- Character Attacks -->
                 <section class="box attacks">
@@ -40,6 +79,7 @@
                         Ataques
                         <button type="button" class="openButton" id="btnCreateAttack"><i class='bx bx-plus'></i></button>
                     </div>
+                    <div class="list"></div>
                 </section>
                 <!-- Character Abilities -->
                 <section class="box abilities">
@@ -47,10 +87,37 @@
                         Habilidades
                         <button type="button" class="openButton" id="btnCreateAbility"><i class='bx bx-plus'></i></button>
                     </div>
+                    <div class="list"></div>
                 </section>
                 <!-- Character Status -->
                 <section class="box status">
                     <span class="title">Status</span>
+                    <div class="content">
+                        <div class="inputField">
+                            <input type="number" id="inputLevel" placeholder="Nível" autocomplete="off" spellcheck="false">
+                            <label for="inputLevel">Nível</label>
+                        </div>
+                        <div class="inputField">
+                            <input type="text" id="inputDefense" placeholder="Defesa" autocomplete="off" spellcheck="false">
+                            <label for="inputDefense">Defesa</label>
+                        </div>
+                        <div class="inputField">
+                            <input type="text" id="inputArmor" placeholder="Armadura" autocomplete="off" spellcheck="false">
+                            <label for="inputArmor">Armadura</label>
+                        </div>
+                        <div class="inputField">
+                            <input type="text" id="inputMovement" placeholder="Movimento" autocomplete="off" spellcheck="false">
+                            <label for="inputMovement">Movimento</label>
+                        </div>
+                        <div class="inputField">
+                            <input type="text" id="inputInitiative" placeholder="Iniciativa" autocomplete="off" spellcheck="false">
+                            <label for="inputInitiative">Iniciativa</label>
+                        </div>
+                        <div class="inputField">
+                            <input type="text" id="inputCondition" placeholder="Condição" autocomplete="off" spellcheck="false">
+                            <label for="inputCondition">Condição</label>
+                        </div>
+                    </div>
                 </section>
                 <!--Character Inventory -->
                 <section class="box inventory">
@@ -58,9 +125,14 @@
                         Inventário
                         <button type="button" class="openButton" id="btnCreateInventoryItem"><i class='bx bx-plus'></i></button>
                     </div>
+                    <div class="list"></div>
                 </section>
                 <!-- Character Notes -->
                 <section class="box notes">
+                    <div class="inputField">
+                        <textarea spellcheck="false" id="sheetNotes" placeholder="Anotações"></textarea>
+                        <label for="sheetNotes">Anotações</label>
+                    </div>
                 </section>
             </div>
         </main>

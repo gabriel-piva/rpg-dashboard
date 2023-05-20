@@ -97,173 +97,91 @@ class Character {
         `;
         return card;
     }
-    getCharacterDisplay() {
+    loadDisplay() {
         const section = document.querySelector(".box.display");
-        section.innerHTML = `
-            <div class="image" id="characterImage" style="background-image: url(${this.image})">
-                <div class="editImage"><i class='bx bxs-pencil'></i></div>
-            </div>
-            <span class="name">${this.name}</span>
-            <div class="life">
-                <i class='bx bxs-heart'></i>
-                <span class="value">${this.life.current}/${this.life.max}</span>
-                <button type="button" class="openButton" id="btnEditLife"><i class='bx bxs-pencil'></i></button>
-            </div>
-            <div class="sanity">
-                <i class='bx bxs-brain'></i>
-                <span class="value">${this.sanity.current}/${this.sanity.max}</span>
-                <button type="button" class="openButton" id="btnEditSanity"><i class='bx bxs-pencil'></i></button>
-            </div>
-            <div class="power">
-                <i class='bx bxs-meteor'></i>
-                <span class="value">${this.power.current}/${this.power.max}</span>
-                <button type="button" class="openButton" id="btnEditPower"><i class='bx bxs-pencil'></i></button>
-            </div>
-        `;
+        section.querySelector(".image").style.backgroundImage = `url(${this.image})`;
+        section.querySelector(".name").innerText = this.name;
+        section.querySelector(".life .value").innerText = `${this.life.current}/${this.life.max}`;
+        section.querySelector(".sanity .value").innerText = `${this.sanity.current}/${this.sanity.max}`;
+        section.querySelector(".power .value").innerText = `${this.power.current}/${this.power.max}`;
         return section;
     }
-    getCharacterDetails() {
+    loadDetails() {
         const section = document.querySelector(".box.details");
-        const content = document.createElement('div');
-        content.classList.add('content');
-        content.innerHTML = `
-            <div class="inputField name">
-                <input type="text" value="${this.name}" id="inputName" placeholder="Nome" autocomplete="off" spellcheck="false">
-                <label for="inputName">Nome</label>
-            </div>
-            <div class="inputField">
-                <input type="text" value="${this.race}" id="inputRace" placeholder="Raça" autocomplete="off" spellcheck="false">
-                <label for="inputRace">Raça</label>
-            </div>
-            <div class="inputField">
-                <input type="text" value="${this.class}" id="inputClass" placeholder="Classe" autocomplete="off" spellcheck="false">
-                <label for="inputClass">Classe</label>
-            </div>
-            <div class="inputField area">
-                <textarea spellcheck="false" id="characterDescription" placeholder="Descrição">${this.description}</textarea>
-                <label for="characterDescription">Descrição</label>
-            </div>
-        `;
-        section.appendChild(content);
+        section.querySelector("#inputName").value = this.name;
+        section.querySelector("#inputRace").value = this.race;
+        section.querySelector("#inputClass").value = this.class;
+        section.querySelector("#characterDescription").innerText = this.description;
         return section;
     }
-    getCharacterAttributes() {
+    loadAttributes() {
         const section = document.querySelector(".box.attributes");
-        const content = document.createElement('div');
-        content.classList.add('content');
-        this.attributes.forEach((attribute, index) => {
-            content.innerHTML += `
-                <div class="item">
-                    ${attribute.name}
-                    <input type="text" class='attribute' data-index="${index}" value='${attribute.value}' autocomplete="off">
-                </div>
-            `;
-        });
-        section.appendChild(content);
+        const items = this.attributes.map((attribute, index) => `
+            <div class="item">
+                ${attribute.name}
+                <input type="text" class="attribute" data-index="${index}" value="${attribute.value}" autocomplete="off">
+            </div>
+        `);
+        section.querySelector(".content").innerHTML = items.join("");
         return section;
     }
-    getCharacterSkills() {
+    loadSkills() {
         const section = document.querySelector(".box.skills");
-        const content = document.createElement('div');
-        content.classList.add('content');
-        this.skills.forEach((skill, index) => {
-            content.innerHTML += `
-                <div class="item">
-                    ${skill.name}
-                    <input type="text" class='skill' data-index="${index}" value='${skill.value}' autocomplete="off">
-                </div>
-            `;
-        });
-        section.appendChild(content);
+        const items = this.skills.map((skill, index) => `
+            <div class="item">
+                ${skill.name}
+                <input type="text" class="skill" data-index="${index}" value="${skill.value}" autocomplete="off">
+            </div>
+        `);
+        section.querySelector(".content").innerHTML = items.join("");
         return section;
     }
-    getCharacterAttacks() {
+    loadAttacks() {
         const section = document.querySelector(".box.attacks");
-        const list = document.createElement('div');
-        list.classList.add('list');
-        this.attacks.forEach((attack, index) => {
-            list.innerHTML += `
-                <div class="attack" data-index="${index}">
-                    <div class="name">${attack.name}</div>
-                    <div class="cost">${attack.cost}<i class='bx bxs-meteor'></i></i></div>
-                </div>
-            `;
-        });
-        section.appendChild(list);
+        const items = this.attacks.map((attack, index) => `
+            <div class="attack" data-index="${index}">
+                <div class="name">${attack.name}</div>
+                <div class="cost">${attack.cost}<i class='bx bxs-meteor'></i></div>
+            </div>
+        `);
+        section.querySelector(".list").innerHTML = items.join("");
         return section;
     }
-    getCharacterAbilities() {
+    loadAbilities() {
         const section = document.querySelector(".box.abilities");
-        const list = document.createElement('div');
-        list.classList.add('list');
-        this.abilities.forEach((ability, index) => {
-            list.innerHTML += `
-                <div class="ability" data-index="${index}">
-                    <div class="name">${ability.name}</div>
-                    <div class="cost">${ability.cost}<i class='bx bxs-meteor'></i></i></div>
-                </div>
-            `;
-        });
-        section.appendChild(list);
+        const items = this.abilities.map((ability, index) => `
+            <div class="ability" data-index="${index}">
+                <div class="name">${ability.name}</div>
+                <div class="cost">${ability.cost}<i class='bx bxs-meteor'></i></div>
+            </div>
+        `);
+        section.querySelector(".list").innerHTML = items.join("");
         return section;
     }
-    getCharacterStatus() {
+    loadStatus() {
         const section = document.querySelector(".box.status");
-        const content = document.createElement('div');
-        content.classList.add('content');
-        content.innerHTML = `
-            <div class="inputField">
-                <input type="number" value="${this.level}" id="inputLevel" placeholder="Nível" autocomplete="off" spellcheck="false">
-                <label for="inputLevel">Nível</label>
-            </div>
-            <div class="inputField">
-                <input type="text" value="${this.defense}" id="inputDefense" placeholder="Defesa" autocomplete="off" spellcheck="false">
-                <label for="inputDefense">Defesa</label>
-            </div>
-            <div class="inputField">
-                <input type="text" value="${this.armor}" id="inputArmor" placeholder="Armadura" autocomplete="off" spellcheck="false">
-                <label for="inputArmor">Armadura</label>
-            </div>
-            <div class="inputField">
-                <input type="text" value="${this.movement}" id="inputMovement" placeholder="Movimento" autocomplete="off" spellcheck="false">
-                <label for="inputMovement">Movimento</label>
-            </div>
-            <div class="inputField">
-                <input type="text" value="${this.initiative}" id="inputInitiative" placeholder="Iniciativa" autocomplete="off" spellcheck="false">
-                <label for="inputInitiative">Iniciativa</label>
-            </div>
-            <div class="inputField">
-                <input type="text" value="${this.condition}" id="inputCondition" placeholder="Condição" autocomplete="off" spellcheck="false">
-                <label for="inputCondition">Condição</label>
-            </div>
-        `;
-        section.appendChild(content);
+        section.querySelector("#inputLevel").value = this.level;
+        section.querySelector("#inputDefense").value = this.defense;
+        section.querySelector("#inputArmor").value = this.armor;
+        section.querySelector("#inputMovement").value = this.movement;
+        section.querySelector("#inputInitiative").value = this.initiative;
+        section.querySelector("#inputCondition").value = this.condition;
         return section;
-        
     }
-    getCharacterInventory() {
+    loadInventory() {
         const section = document.querySelector(".box.inventory");
-        const list = document.createElement('div');
-        list.classList.add('list');
-        this.inventory.forEach((item, index) => {
-            list.innerHTML += `
-                <div class="item"">
-                    ${item}
-                    <button type="button" data-index="${index}" class="openButton"><i class="bx bxs-trash"></i></button>
-                </div>
-            `;
-        });
-        section.appendChild(list);
+        const items = this.inventory.map((item, index) => `
+            <div class="item"">
+                ${item}
+                <button type="button" data-index="${index}" class="openButton"><i class="bx bxs-trash"></i></button>
+            </div>
+        `);
+        section.querySelector(".list").innerHTML = items.join("");
         return section;
     }
-    getCharacterNotes() {
+    loadNotes() {
         const section = document.querySelector(".box.notes");
-        section.innerHTML = `
-            <div class="inputField">
-                <textarea spellcheck="false" id="sheetNotes" placeholder="Anotações">${this.notes}</textarea>
-                <label for="sheetNotes">Anotações</label>
-            </div>
-        `;
+        section.querySelector("#sheetNotes").innerText = this.notes;
         return section;
     }
 }
