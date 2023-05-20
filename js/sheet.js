@@ -6,7 +6,7 @@
 
 import { Attack } from "./model/attack.js";
 import { Ability } from "./model/ability.js";
-import { getCharactersData, setCharactersData, updateCharacterData } from "./storage.js";
+import { getCharactersData, updateCharacterData } from "./storage.js";
 import { createDiceSection, setModalMainAction, openModal, closeModal } from "./utils.js";
 
 // --------------------------------------------------------------------------
@@ -166,6 +166,26 @@ const removeAttack = (index) => {
 // Abilities Box
 const loadCharacterAbilities = () => {
     const abilities = currentCharacter.loadAbilities();
+    abilities.querySelector("#btnCreateAbility").addEventListener('click', modalCreateAbility);
+    const tags = abilities.querySelectorAll(".ability");
+    tags.forEach(ability => ability.addEventListener("click", () => modalOpenAbility(ability.dataset.index)));
+}
+const addAbility = () => {
+    const name = document.querySelector("#inputAbility").value;
+    const cost = document.querySelector("#inputAbilityCost").value;
+    const description = document.querySelector("#abilityDescription").value;
+    if (name.length == 0 || cost.length == 0 || description.length == 0) return;
+    const ability = new Ability(name, cost, description);
+    currentCharacter.abilities.push(ability);
+    updateCharacterData(currentCharacter, characterIndex);
+    loadCharacterAbilities();
+    closeModal();
+}
+const removeAbility = (index) => {
+    currentCharacter.abilities.splice(index, 1);
+    updateCharacterData(currentCharacter, characterIndex);
+    loadCharacterAbilities();
+    closeModal();
 }
 
 // -------------------------------------------------
@@ -267,7 +287,7 @@ const modalUpdatePower = () => {
     setModalMainAction(updatePower);
 }
 
-// Modals Attack
+// Attack Modals
 const modalCreateAttack = () => {
     openModal();
     modalContainer.classList.add("modalCreateAttack");
@@ -309,6 +329,45 @@ const modalOpenAttack = (index) => {
         modalDelete(index, 'attack');
     })
 }
+
+// Ability Modals
+const modalCreateAbility = () => {
+    openModal();
+    modalContainer.classList.add("modalCreateAbility");
+    modalContent.innerHTML = `
+        <div class="inputField">
+            <input type="text" id="inputAbility" placeholder="Habilidade" autocomplete="off" spellcheck="false">
+            <label for="inputAbility">Habilidade</label>
+        </div>
+        <div class="inputField">
+            <input type="text" id="inputAbilityCost" placeholder="Custo (Poder)" autocomplete="off" spellcheck="false">
+            <label for="inputAbilityCost">Custo (Poder)</label>
+        </div>
+        <div class="inputField">
+            <textarea id="abilityDescription" placeholder="Descrição" spellcheck="false"></textarea>
+            <label for="abilityDescription">Descrição</label>
+        </div>
+    `;
+    setModalMainAction(addAbility);
+}
+const modalOpenAbility = (index) => {
+    openModal();
+    modalContainer.classList.add("modalOpenAbility");
+    const ability = currentCharacter.abilities[index];
+    modalContent.innerHTML = `
+        <div class="header">
+            <span class="name">${ability.name}</span>
+            <span class="cost">${ability.cost}<i class='bx bxs-meteor'></i></span>
+        </div>
+        <span class="description">${ability.description}</span>
+    `;
+    document.querySelector("#btnMainActionModal").innerHTML = "<i class='bx bxs-trash'></i>";
+    setModalMainAction(() => {
+        closeModal();
+        modalDelete(index, 'ability');
+    });
+}
+
 
 // --------------------------------------------------------------------------
 
