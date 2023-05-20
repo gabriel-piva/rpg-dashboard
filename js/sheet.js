@@ -4,7 +4,6 @@
 
 // --------------------------------------------------------------------------
 
-import { Character } from "./model/character.js";
 import { getCharactersData, setCharactersData } from "./storage.js";
 import { createDiceSection, setModalMainAction, openModal, closeModal } from "./utils.js";
 
@@ -28,10 +27,10 @@ const getCurrentCharacter = () => {
 // Display Box
 const loadCharacterDisplay = () => {
     const display = currentCharacter.loadDisplay();
-    display.querySelector("#characterImage").addEventListener('click', null);
-    display.querySelector("#btnEditLife").addEventListener('click', null);
-    display.querySelector("#btnEditSanity").addEventListener('click', null);
-    display.querySelector("#btnEditPower").addEventListener('click', null);
+    display.querySelector("#characterImage").addEventListener('click', modalUpdateImage);
+    display.querySelector("#btnEditLife").addEventListener('click', modalUpdateLife);
+    display.querySelector("#btnEditSanity").addEventListener('click', modalUpdateSanity);
+    display.querySelector("#btnEditPower").addEventListener('click', modalUpdatePower);
 }
 
 // Update Display
@@ -182,7 +181,76 @@ const loadCharacterNotes = () => {
 const modalContainer = document.querySelector('.modalContainer');
 const modalContent = document.querySelector('.modalContent');
 
-// TODO
+// Modal Delete
+const modalDelete = (index, id) => {
+    openModal();
+    modalContainer.classList.add("modalDelete");
+    modalContent.innerHTML = "<span>Deseja realmente excluir?</span>";
+    const deleteFunctions = {
+        'attack': () => removeAttack(index),
+        'ability': () => removeAbility(index),
+        'inventoryItem': () => removeInventoryItem(index)
+    };
+    setModalMainAction(deleteFunctions[id]);
+}
+
+// Modals to Update Display
+const modalUpdateImage = () => {
+    openModal();
+    modalContainer.classList.add("modalImage");
+    modalContent.innerHTML = `
+        <div class="inputField">
+            <input type="url" id="inputImage" placeholder="Imagem (URL)" value="${currentCharacter.image == "../images/starter.jpg" ? "" : currentCharacter.image}" autocomplete="off" spellcheck="false">
+            <label for="inputImage">Imagem (URL)</label>
+        </div>
+    `;
+    setModalMainAction(updateImage);
+}
+const modalUpdateLife = () => {
+    openModal();
+    modalContainer.classList.add("modalLife");
+    modalContent.innerHTML = `
+        <div class="inputField">
+            <input type="text" id="inputCurrentLife" placeholder="Vida Atual" value="${currentCharacter.life.current}" autocomplete="off" spellcheck="false">
+            <label for="inputCurrentLife">Vida Atual</label>
+        </div>
+        <div class="inputField">
+            <input type="text" id="inputMaxLife" placeholder="Vida Máxima" value="${currentCharacter.life.max}" autocomplete="off" spellcheck="false">
+            <label for="inputMaxLife">Vida Máxima</label>
+        </div>
+    `;
+    setModalMainAction(updateLife);
+}
+const modalUpdateSanity = () => {
+    openModal();
+    modalContainer.classList.add("modalSanity");
+    modalContent.innerHTML = `
+        <div class="inputField">
+            <input type="text" id="inputCurrentSanity" placeholder="Sanidade Atual" value="${currentCharacter.sanity.current}" autocomplete="off" spellcheck="false">
+            <label for="inputCurrentSanity">Sanidade Atual</label>
+        </div>
+        <div class="inputField">
+            <input type="text" id="inputMaxSanity" placeholder="Sanidade Máxima" value="${currentCharacter.sanity.max}" autocomplete="off" spellcheck="false">
+            <label for="inputMaxSanity">Sanidade Máxima</label>
+        </div>
+    `;
+    setModalMainAction(updateSanity);
+}
+const modalUpdatePower = () => {
+    openModal();
+    modalContainer.classList.add("modalPower");
+    modalContent.innerHTML = `
+        <div class="inputField">
+            <input type="text" id="inputCurrentPower" placeholder="Poder Atual" value="${currentCharacter.power.current}" autocomplete="off" spellcheck="false">
+            <label for="inputCurrentPower">Poder Atual</label>
+        </div>
+        <div class="inputField">
+            <input type="text" id="inputMaxPower" placeholder="Poder Máximo" value="${currentCharacter.power.max}" autocomplete="off" spellcheck="false">
+            <label for="inputMaxPower">Poder Máximo</label>
+        </div>
+    `;
+    setModalMainAction(updatePower);
+}
 
 // --------------------------------------------------------------------------
 
