@@ -18,8 +18,13 @@ const getCharactersData = () => {
     return Character.convertCharacters(charactersList);
 }
 const setCharactersData = (charactersList) => localStorage.setItem(charactersKey, JSON.stringify(charactersList));
+const updateCharacterData = (newCharacter, index) => {
+    const charactersList = getCharactersData();
+    charactersList[index] = newCharacter;
+    setCharactersData(charactersList);
+}
 
-export { getCharactersData, setCharactersData };
+export { getCharactersData, setCharactersData, updateCharacterData };
 
 // --------------------------------------------------------------------------
 

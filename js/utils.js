@@ -94,6 +94,7 @@ const closeModal = () => {
     modalContainer.className = modalContainer.classList[0];
     modalContent.innerHTML = "";
     btnMainAction.disabled = false;
+    btnMainAction.innerHTML = "<i class='bx bx-check'></i>";
     removeModalMainAction();
 }
 

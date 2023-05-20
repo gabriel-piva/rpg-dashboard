@@ -4,7 +4,9 @@
 
 // --------------------------------------------------------------------------
 
-import { getCharactersData, setCharactersData } from "./storage.js";
+import { Attack } from "./model/attack.js";
+import { Ability } from "./model/ability.js";
+import { getCharactersData, setCharactersData, updateCharacterData } from "./storage.js";
 import { createDiceSection, setModalMainAction, openModal, closeModal } from "./utils.js";
 
 // --------------------------------------------------------------------------
@@ -32,15 +34,11 @@ const loadCharacterDisplay = () => {
     display.querySelector("#btnEditSanity").addEventListener('click', modalUpdateSanity);
     display.querySelector("#btnEditPower").addEventListener('click', modalUpdatePower);
 }
-
-// Update Display
 const updateImage = () => {
     const newImage = document.querySelector("#inputImage").value;
     if(newImage.length == 0) return;
-    const charactersList = getCharactersData();
-    charactersList[characterIndex].image = newImage;
-    setCharactersData(charactersList);
-    currentCharacter = charactersList[characterIndex];
+    currentCharacter.image = newImage;
+    updateCharacterData(currentCharacter, characterIndex);
     loadCharacterDisplay();
     closeModal();
 }
@@ -48,11 +46,9 @@ const updateLife = () => {
     const currentLife = document.querySelector("#inputCurrentLife").value;
     const maxLife = document.querySelector("#inputMaxLife").value;
     if(currentLife.length == 0 || maxLife.length == 0) return;
-    const charactersList = getCharactersData();
-    charactersList[characterIndex].life.current = currentLife;
-    charactersList[characterIndex].life.max = maxLife;
-    setCharactersData(charactersList);
-    currentCharacter = charactersList[characterIndex];
+    currentCharacter.life.current = currentLife;
+    currentCharacter.life.max = maxLife;
+    updateCharacterData(currentCharacter, characterIndex);
     loadCharacterDisplay();
     closeModal();
 }
@@ -60,11 +56,9 @@ const updateSanity = () => {
     const currentSanity = document.querySelector("#inputCurrentSanity").value;
     const maxSanity = document.querySelector("#inputMaxSanity").value;
     if(currentSanity.length == 0 || maxSanity.length == 0) return;
-    const charactersList = getCharactersData();
-    charactersList[characterIndex].sanity.current = currentSanity;
-    charactersList[characterIndex].sanity.max = maxSanity;
-    setCharactersData(charactersList);
-    currentCharacter = charactersList[characterIndex];
+    currentCharacter.sanity.current = currentSanity;
+    currentCharacter.sanity.max = maxSanity;
+    updateCharacterData(currentCharacter, characterIndex);
     loadCharacterDisplay();
     closeModal();
 }
@@ -72,11 +66,9 @@ const updatePower = () => {
     const currentPower = document.querySelector("#inputCurrentPower").value;
     const maxPower = document.querySelector("#inputMaxPower").value;
     if(currentPower.length == 0 || maxPower.length == 0) return;
-    const charactersList = getCharactersData();
-    charactersList[characterIndex].power.current = currentPower;
-    charactersList[characterIndex].power.max = maxPower;
-    setCharactersData(charactersList);
-    currentCharacter = charactersList[characterIndex];
+    currentCharacter.power.current = currentPower;
+    currentCharacter.power.max = maxPower;
+    updateCharacterData(currentCharacter, characterIndex);
     loadCharacterDisplay();
     closeModal();
 }
@@ -91,37 +83,24 @@ const loadCharacterDetails = () => {
     details.querySelector("#inputClass").addEventListener("input", updateClass);
     details.querySelector("#characterDescription").addEventListener("input", updateDescription);
 }
-
-// Update Details
 const updateName = () => {
     const newName = document.querySelector("#inputName").value
     if(newName.length == 0) return;
-    const charactersList = getCharactersData();
-    charactersList[characterIndex].name = newName;
-    setCharactersData(charactersList);
-    currentCharacter = charactersList[characterIndex];
-    document.querySelector('.display .name').innerText = newName;
+    currentCharacter.name = newName;
+    updateCharacterData(currentCharacter, characterIndex);
+    document.querySelector('.display .name').innerText = currentCharacter.name;
 }
 const updateRace = () => {
-    const newRace = document.querySelector('#inputRace').value;
-    const charactersList = getCharactersData();
-    charactersList[characterIndex].race = newRace;
-    setCharactersData(charactersList);
-    currentCharacter = charactersList[characterIndex];
+    currentCharacter.race = document.querySelector('#inputRace').value;
+    updateCharacterData(currentCharacter, characterIndex);
 }
 const updateClass = () => {
-    const newClass = document.querySelector('#inputClass').value;
-    const charactersList = getCharactersData();
-    charactersList[characterIndex].class = newClass;
-    setCharactersData(charactersList);
-    currentCharacter = charactersList[characterIndex];
+    currentCharacter.class = document.querySelector('#inputClass').value;
+    updateCharacterData(currentCharacter, characterIndex);
 }
 const updateDescription = () => {
-    const newDescription = document.querySelector('#characterDescription').value;
-    const charactersList = getCharactersData();
-    charactersList[characterIndex].description = newDescription;
-    setCharactersData(charactersList);
-    currentCharacter = charactersList[characterIndex];   
+    currentCharacter.description = document.querySelector('#characterDescription').value;
+    updateCharacterData(currentCharacter, characterIndex);
 }
 
 // -------------------------------------------------
@@ -129,7 +108,14 @@ const updateDescription = () => {
 // Attributes Box
 const loadCharacterAttributes = () => {
     const attributes = currentCharacter.loadAttributes();
-    //attributes.querySelector("").addEventListener("", func);
+    const tags = attributes.querySelectorAll('.attribute');
+    tags.forEach(attribute => attribute.addEventListener("input", () => updateAttribute(attribute)));
+}
+const updateAttribute = (attribute) => {
+    if(attribute.value.length == 0) return;
+    const index = attribute.dataset.index;
+    currentCharacter.attributes[index].value = attribute.value;
+    updateCharacterData(currentCharacter, characterIndex);
 }
 
 // -------------------------------------------------
@@ -137,6 +123,14 @@ const loadCharacterAttributes = () => {
 // Skills Box
 const loadCharacterSkills = () => {
     const skills = currentCharacter.loadSkills();
+    const tags = skills.querySelectorAll('.skill');
+    tags.forEach(skill => skill.addEventListener("input", () => updateSkill(skill)));
+}
+const updateSkill = (skill) => {
+    if(skill.value.length == 0) return;
+    const index = skill.dataset.index;
+    currentCharacter.skills[index].value = skill.value;
+    updateCharacterData(currentCharacter, characterIndex);
 }
 
 // -------------------------------------------------
@@ -144,6 +138,27 @@ const loadCharacterSkills = () => {
 // Attacks Box
 const loadCharacterAttacks = () => {
     const attacks = currentCharacter.loadAttacks();
+    attacks.querySelector("#btnCreateAttack").addEventListener('click', modalCreateAttack);
+    const tags = attacks.querySelectorAll(".attack");
+    tags.forEach(attack => attack.addEventListener("click", () => modalOpenAttack(attack.dataset.index)));
+}
+const addAttack = () => {
+    const name = document.querySelector("#inputAttack").value;
+    const cost = document.querySelector("#inputAttackCost").value;
+    const damage = document.querySelector("#inputAttackDamage").value;
+    const description = document.querySelector("#attackDescription").value;
+    if(name.length == 0 || cost.length == 0 || damage.length == 0 || description.length == 0) return;
+    const attack = new Attack(name, cost, damage, description);
+    currentCharacter.attacks.push(attack);
+    updateCharacterData(currentCharacter, characterIndex);
+    loadCharacterAttacks();
+    closeModal();
+}
+const removeAttack = (index) => {
+    currentCharacter.attacks.splice(index, 1);
+    updateCharacterData(currentCharacter, characterIndex);
+    loadCharacterAttacks();
+    closeModal();
 }
 
 // -------------------------------------------------
@@ -250,6 +265,49 @@ const modalUpdatePower = () => {
         </div>
     `;
     setModalMainAction(updatePower);
+}
+
+// Modals Attack
+const modalCreateAttack = () => {
+    openModal();
+    modalContainer.classList.add("modalCreateAttack");
+    modalContent.innerHTML = `
+        <div class="inputField">
+            <input type="text" id="inputAttack" placeholder="Ataque" autocomplete="off" spellcheck="false">
+            <label for="inputAttack">Ataque</label>
+        </div>
+        <div class="inputField">
+            <input type="text" id="inputAttackCost" placeholder="Custo (Poder)" autocomplete="off" spellcheck="false">
+            <label for="inputAttackCost">Custo (Poder)</label>
+        </div>
+        <div class="inputField">
+            <input type="text" id="inputAttackDamage" placeholder="Dano" autocomplete="off" spellcheck="false">
+            <label for="inputAttackDamage">Dano</label>
+        </div>
+        <div class="inputField">
+            <textarea id="attackDescription" placeholder="Descrição" spellcheck="false"></textarea>
+            <label for="attackDescription">Descrição</label>
+        </div>
+    `;
+    setModalMainAction(addAttack);
+}
+const modalOpenAttack = (index) => {
+    openModal();
+    modalContainer.classList.add("modalOpenAttack");
+    const attack = currentCharacter.attacks[index];
+    modalContent.innerHTML = `
+        <div class="header">
+            <span class="name">${attack.name}</span>
+            <span class="cost">${attack.cost}<i class='bx bxs-meteor'></i></span>
+        </div>
+        <span class="damage">${attack.damage}</span>
+        <span class="description">${attack.description}</span>
+    `;
+    document.querySelector("#btnMainActionModal").innerHTML = "<i class='bx bxs-trash'></i>";
+    setModalMainAction(() => {
+        closeModal();
+        modalDelete(index, 'attack');
+    })
 }
 
 // --------------------------------------------------------------------------
