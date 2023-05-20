@@ -29,7 +29,7 @@ const createDiceSection = () => {
     `;
     document.querySelector('main .container').appendChild(section);
     document.querySelector("#btnRollDice").addEventListener('click', rollDices);
-};
+}
 const rollDices = () => {
     const inputDices = document.querySelector('#inputDices');
     const diceType = parseInt(document.querySelector('#diceType').value);
