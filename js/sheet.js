@@ -236,6 +236,23 @@ const updateCondition = () => {
 // Inventory Box
 const loadCharacterInventory = () => {
     const inventory = currentCharacter.loadInventory();
+    inventory.querySelector("#btnCreateInventoryItem").addEventListener('click', modalCreateInventoryItem);
+    const tags = inventory.querySelectorAll(".item button");
+    tags.forEach(item => item.addEventListener('click', () => modalDelete(item.dataset.index, 'inventoryItem')));
+}
+const addInventoryItem = () => {
+    const item = document.querySelector("#inputInventoryItem").value;
+    if(item.length == 0) return;
+    currentCharacter.inventory.push(item);
+    updateCharacterData(currentCharacter, characterIndex);
+    loadCharacterInventory();
+    closeModal();
+}
+const removeInventoryItem = (index) => {
+    currentCharacter.inventory.splice(index, 1);
+    updateCharacterData(currentCharacter, characterIndex);
+    loadCharacterInventory();
+    closeModal();
 }
 
 // -------------------------------------------------
@@ -410,6 +427,18 @@ const modalOpenAbility = (index) => {
     });
 }
 
+// Inventory Modal
+const modalCreateInventoryItem = () => {
+    openModal();
+    modalContainer.classList.add("modalCreateInventoryItem");
+    modalContent.innerHTML = `
+        <div class="inputField">
+            <input type="text" id="inputInventoryItem" placeholder="Item" autocomplete="off" spellcheck="false">
+            <label for="inputInventoryItem">Item</label>
+        </div>
+    `;
+    setModalMainAction(addInventoryItem);
+}
 
 // --------------------------------------------------------------------------
 
