@@ -193,6 +193,42 @@ const removeAbility = (index) => {
 // Status Box
 const loadCharacterStatus = () => {
     const status = currentCharacter.loadStatus();
+    status.querySelector("#inputLevel").addEventListener("input", updateLevel);
+    status.querySelector("#inputDefense").addEventListener("input", updateDefense);
+    status.querySelector("#inputArmor").addEventListener("input", updateArmor);
+    status.querySelector("#inputMovement").addEventListener("input", updateMovement);
+    status.querySelector("#inputInitiative").addEventListener("input", updateInitiative);
+    status.querySelector("#inputCondition").addEventListener("input", updateCondition);
+}
+const updateLevel = () => {
+    const newLevel = document.querySelector("#inputLevel").value;
+    currentCharacter.level = newLevel;
+    updateCharacterData(currentCharacter, characterIndex);
+}
+const updateDefense = () => {
+    const newDefense = document.querySelector("#inputDefense").value;
+    currentCharacter.defense = newDefense;
+    updateCharacterData(currentCharacter, characterIndex);
+}
+const updateArmor = () => {
+    const newArmor = document.querySelector("#inputArmor").value;
+    currentCharacter.armor = newArmor;
+    updateCharacterData(currentCharacter, characterIndex);
+}
+const updateMovement = () => {
+    const newMovement = document.querySelector("#inputMovement").value;
+    currentCharacter.movement = newMovement;
+    updateCharacterData(currentCharacter, characterIndex);
+}
+const updateInitiative = () => {
+    const newInitiative = document.querySelector("#inputInitiative").value;
+    currentCharacter.initiative = newInitiative;
+    updateCharacterData(currentCharacter, characterIndex);
+}
+const updateCondition = () => {
+    const newCondition = document.querySelector("#inputCondition").value;
+    currentCharacter.condition = newCondition;
+    updateCharacterData(currentCharacter, characterIndex);
 }
 
 // -------------------------------------------------
@@ -207,6 +243,12 @@ const loadCharacterInventory = () => {
 // Notes Box
 const loadCharacterNotes = () => {
     const notes = currentCharacter.loadNotes();
+    notes.querySelector("#sheetNotes").addEventListener("input", updateNotes);
+}
+const updateNotes = () => {
+    const newNotes = document.querySelector("#sheetNotes").value;
+    currentCharacter.notes = newNotes;
+    updateCharacterData(currentCharacter, characterIndex);
 }
 
 // --------------------------------------------------------------------------
