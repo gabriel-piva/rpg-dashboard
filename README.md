@@ -9,7 +9,6 @@ Para cada personagem, é possível acessar sua ficha. Nela, é possível visuali
 A ideia do Dashboard é ser simples e flexível para poder ser utilizado em diferentes sistemas de RPG, considerando a personalização dos atributos e perícias e uma ficha de personagem genérica, porém bastante completa, com informações presentes em vários sistemas. Além disso, todos os dados são salvos de forma local para um uso mais fácil. 
 
 <img src="./images/dashboard.png" width="85%" alt="Dashboard Page">
-<img src="./images/sheet.png" width="85%" alt="Sheet">
 
 ### Tecnologias
 <div style="display: flex; gap: 5px;">
