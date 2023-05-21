@@ -46,7 +46,7 @@ const removeCharacter = (index) => {
     closeModal();
     loadCharacters();
 }
-const openCharacter = (index) => window.location.assign(`../sheet.html?index=${index}`);
+const openCharacter = (index) => window.location.assign(`sheet.html?index=${index}`);
 
 // --------------------------------------------------------------------------
 
