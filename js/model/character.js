@@ -35,7 +35,7 @@ class Character {
         this.name = name;
         this.attributes = attributes;
         this.skills = skills;
-        this.image = "/images/starter.jpg";
+        this.image = "../images/starter.jpg";
         this.life = new Stat(0, 0);
         this.sanity = new Stat(0, 0);
         this.power = new Stat(0, 0);
