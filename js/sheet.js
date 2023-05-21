@@ -466,6 +466,7 @@ const loadSheetData = () => {
 // Events
 
 window.onload = loadSheetData;
+document.querySelector("#btnDashboard").addEventListener("click", () => window.location.assign('./index.html'));
 document.querySelector("#btnCloseModal").addEventListener("click", closeModal);
 document.querySelector('.modal').addEventListener('click', (e) => e.target == document.querySelector('.modal') && closeModal());
 

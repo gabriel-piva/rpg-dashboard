@@ -247,6 +247,22 @@ main .container .inventory .list .item button {
 
 /*--------------------------------------------------------------------------*/
 
+/* Dashboard Button */
+
+#btnDashboard {
+    font-weight: 700;
+    padding: .7rem;
+    gap: .5rem;
+    font-size: 1.7rem;
+    margin-bottom: 12px;
+}
+#btnDashboard i {
+    font-weight: 700;
+    font-size: 2.1rem;
+}
+
+/*--------------------------------------------------------------------------*/
+
 /* Modal Create Attack, Ablity & Inventory Item */
 
 .modal .modalContainer.modalCreateAttack .modalContent .inputField,
