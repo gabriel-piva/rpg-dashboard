@@ -294,7 +294,7 @@ const modalUpdateImage = () => {
     modalContainer.classList.add("modalImage");
     modalContent.innerHTML = `
         <div class="inputField">
-            <input type="url" id="inputImage" placeholder="Imagem (URL)" value="${currentCharacter.image == "../../images/starter.jpg" ? "" : currentCharacter.image}" autocomplete="off" spellcheck="false">
+            <input type="url" id="inputImage" placeholder="Imagem (URL)" value="${currentCharacter.image == "images/starter.jpg" ? "" : currentCharacter.image}" autocomplete="off" spellcheck="false">
             <label for="inputImage">Imagem (URL)</label>
         </div>
     `;
