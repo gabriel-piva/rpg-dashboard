@@ -19,7 +19,7 @@ const getCurrentCharacter = () => {
     characterIndex = parseInt(url.get('index'));
     const charactersList = getCharactersData();
     currentCharacter = charactersList[characterIndex];
-    if(!currentCharacter) window.location.assign('./index.html');
+    if(!currentCharacter) window.location.assign('index.html');
 }
 
 // --------------------------------------------------------------------------
@@ -294,7 +294,7 @@ const modalUpdateImage = () => {
     modalContainer.classList.add("modalImage");
     modalContent.innerHTML = `
         <div class="inputField">
-            <input type="url" id="inputImage" placeholder="Imagem (URL)" value="${currentCharacter.image == "../images/starter.jpg" ? "" : currentCharacter.image}" autocomplete="off" spellcheck="false">
+            <input type="url" id="inputImage" placeholder="Imagem (URL)" value="${currentCharacter.image == "/images/starter.jpg" ? "" : currentCharacter.image}" autocomplete="off" spellcheck="false">
             <label for="inputImage">Imagem (URL)</label>
         </div>
     `;
@@ -466,7 +466,7 @@ const loadSheetData = () => {
 // Events
 
 window.onload = loadSheetData;
-document.querySelector("#btnDashboard").addEventListener("click", () => window.location.assign('./index.html'));
+document.querySelector("#btnDashboard").addEventListener("click", () => window.location.assign('../index.html'));
 document.querySelector("#btnCloseModal").addEventListener("click", closeModal);
 document.querySelector('.modal').addEventListener('click', (e) => e.target == document.querySelector('.modal') && closeModal());
 
