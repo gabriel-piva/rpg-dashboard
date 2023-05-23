@@ -17,7 +17,7 @@ A ideia do Dashboard é ser simples e flexível para poder ser utilizado em dife
 </div>
 
 ### Execução
-Para executar o projeto bastar clonar o repositório com o link abaixo:
+Para executar o projeto basta clonar o repositório com o link abaixo:
 ```bash
 git clone https://github.com/gabriel-piva/rpg-dashboard.git
 ```
