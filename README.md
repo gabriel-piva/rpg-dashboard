@@ -7,23 +7,21 @@ Para cada personagem, é possível acessar sua ficha. Nela, é possível visuali
 
 A ideia do Dashboard é ser simples e flexível para poder ser utilizado em diferentes sistemas de RPG, considerando a personalização dos atributos e perícias, além de uma ficha de personagem genérica, porém bastante completa, com informações presentes em vários sistemas. Além disso, todos os dados são salvos de forma local para um uso mais fácil.
 
-<img src="./images/dashboard.png" width="85%" alt="Dashboard Page">
+<img src="images/dashboard.png" width="85%" alt="Dashboard Page">
 
 ### Tecnologias
 <div style="display: flex; gap: 5px;">
+    <img src="https://img.shields.io/badge/Javascript-F0DB4F?style=for-the-badge&logo=javascript&logoColor=F0DB4F&labelColor=070707" alt="JavaScript">
     <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=E34F26&labelColor=070707" alt="HTML">
     <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=1572B6&labelColor=070707" alt="CSS">
-    <img src="https://img.shields.io/badge/Javascript-F0DB4F?style=for-the-badge&logo=javascript&logoColor=F0DB4F&labelColor=070707" alt="JavaScript">
 </div>
 
 ### Execução
-Para acessar o projeto basta acessar o link [🔗RPG Dashboard](https://gabriel-piva.github.io/rpg-dashboard/) gerado com o [Github Pages](https://pages.github.com/) ou clonar o repositório e abrir o arquivo `index.html` em algum servidor web.
+Para executar o projeto bastar clonar o repositório com o link abaixo:
 ```bash
 git clone https://github.com/gabriel-piva/rpg-dashboard.git
 ```
-
-### Objetivo
-O projeto tinha como objetivo principal o estudo e prática de HTML, CSS e JavaScript, focando na construção de uma aplicação responsiva e em como os personagens e seus aspectos são salvos e atualizados usando Local Storage, enquanto estão integrados entre si pela estrutura de classes.
+Em sequência, navegue até a pasta e abra o arquivo `index.html` em algum servidor web.
 
 ### Referências
 O ícone da página vem do [Flaticon](https://www.flaticon.com/free-icon/swords_8530442), a fonte utilizada vem do [Google Fonts](https://fonts.google.com/specimen/Red+Hat+Display) e a biblioteca de ícones é a [Boxicons](https://boxicons.com/).
